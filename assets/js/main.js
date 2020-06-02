@@ -1,4 +1,5 @@
 var requestUrl = 'https://api.weatherbit.io/v2.0/history/airquality?lat=41.4090&lon=-75.6624&key=eb2a6d93c1cc44e2bf4dcd8f4ac81a9c';
+var currentRequestUrl = 'https://api.weatherbit.io/v2.0/current/airquality?lat=41.4090&lon=-75.6624&key=eb2a6d93c1cc44e2bf4dcd8f4ac81a9c'
 var time_labels;
 var aqi;
 var pm10;
@@ -7,10 +8,6 @@ var co;
 var o3;
 var so2;
 var no2;
-var predominant_pollen_type;
-var pollen_level_tree;
-var pollen_level_weed;
-var pollen_level_grass;
 
 (function ($) {
 
@@ -79,10 +76,6 @@ var pollen_level_grass;
 		o3 = [];
 		so2 = [];
 		no2 = [];
-		predominant_pollen_type = [];
-		pollen_level_tree = [];
-		pollen_level_weed = [];
-		pollen_level_grass = [];
 		$.getJSON(requestUrl)
 			.done((data) => {
 				for (var i = data.data.length; i >= 0; i--) {
@@ -98,17 +91,42 @@ var pollen_level_grass;
 						o3.push(data.data[i].o3);
 						pm10.push(data.data[i].pm10);
 						pm25.push(data.data[i].pm25);
-						pollen_level_tree.push(data.data[i].pollen_level_tree);
-						pollen_level_weed.push(data.data[i].pollen_level_weed);
-						pollen_level_grass.push(data.data[i].pollen_level_grass);
-
+					
 					}
 				}
 				displayChart();
+				var currentAQI = aqi[data.data.length - 1];
+				if (currentAQI <= 50) {
+					document.getElementById("currentaqi").innerHTML = "Good";
+					document.getElementById("currentaqi").style.color = '#40ff00';
+				}
+				else if (currentAQI <= 100) {
+					document.getElementById("currentaqi").innerHTML = "Moderate";
+					document.getElementById("currentaqi").style.color = '#ffff00';
+				}
+				else if (currentAQI <= 150) {
+					document.getElementById("currentaqi").innerHTML = "Unhealthy";
+					document.getElementById("currentaqi").style.color = '#ff8000';
+				}
+				else {
+					document.getElementById("currentaqi").innerHTML = "Very Unhealthy";
+					document.getElementById("currentaqi").style.color = '#ff0000';
+				}
+			})
+			$.getJSON(currentRequestUrl)
+			.done((data) => {
+				if(data.data[0]){
+					document.getElementById("grass-level").innerHTML = data.data[0].pollen_level_grass;
+					document.getElementById("weed-level").innerHTML = data.data[0].pollen_level_weed;
+					document.getElementById("tree-level").innerHTML = data.data[0].pollen_level_tree;
+					document.getElementById("mold-level").innerHTML = data.data[0].mold_level;
+				}
 			})
 	})
 
-})(jQuery);
+
+})
+	(jQuery);
 
 function displayChart() {
 	console.log(time_labels);
@@ -196,6 +214,3 @@ function displayChart() {
 
 	});
 }
-
-
-
