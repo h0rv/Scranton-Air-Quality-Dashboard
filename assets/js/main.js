@@ -96,6 +96,8 @@ var no2;
 				}
 				displayChart();
 				var currentAQI = aqi[data.data.length - 1];
+				document.getElementById("currentaqi-text").innerHTML = "Current Air Quality is: " + currentAQI;
+
 				if (currentAQI <= 50) {
 					document.getElementById("currentaqi").innerHTML = "Good";
 					document.getElementById("currentaqi").style.color = '#40ff00';
@@ -129,7 +131,6 @@ var no2;
 	(jQuery);
 
 function displayChart() {
-	console.log(time_labels);
 	var chartRef = document.getElementById("chart").getContext("2d");
 	new Chart(chartRef, {
 		options: {
