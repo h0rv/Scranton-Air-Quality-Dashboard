@@ -149,7 +149,7 @@ function displayChart() {
 			labels: time_labels,
 			datasets: [{
 				data: aqi,
-				label: "Air Quality Index",
+				label: "AQI",
 				borderColor: "rgba(205, 97, 85)",
 				fillColor: "rgba(205, 97, 85,0.2)",
 				strokeColor: "rgba(205, 97, 85,1)",
@@ -158,7 +158,7 @@ function displayChart() {
 			},
 			{
 				data: co,
-				label: "Concentration of carbon monoxide (µg/m³)",
+				label: "CO (µg/m³)",
 				borderColor: "rgba(195, 155, 211)",
 				fillColor: "rgba(195, 155, 211,0.2)",
 				strokeColor: "rgba(195, 155, 211,1)",
@@ -167,7 +167,7 @@ function displayChart() {
 			},
 			{
 				data: so2,
-				label: "Concentration of surface SO2 (µg/m³)",
+				label: "SO2 (µg/m³)",
 				borderColor: "rgba(127, 179, 213)",
 				fillColor: "rgba(127, 179, 213,0.2)",
 				strokeColor: "rgba(127, 179, 213,1)",
@@ -176,7 +176,7 @@ function displayChart() {
 			},
 			{
 				data: no2,
-				label: "NO2",
+				label: "NO2	(µg/m³)",
 				borderColor: "rgba(118, 215, 196)",
 				fillColor: "rgba(118, 215, 196,0.2)",
 				strokeColor: "rgba(118, 215, 196,1)",
@@ -185,7 +185,7 @@ function displayChart() {
 			},
 			{
 				data: o3,
-				label: "Concentration of surface O3 (µg/m³)",
+				label: "O3 (µg/m³)",
 				borderColor: "rgba(247, 220, 111)",
 				fillColor: "rgba(247, 220, 111,0.2)",
 				strokeColor: "rgba(247, 220, 111,1)",
@@ -194,7 +194,7 @@ function displayChart() {
 			},
 			{
 				data: pm10,
-				label: "Concentration of particulate matter < 2.5 microns (µg/m³)",
+				label: "PM < 2.5  (µg/m³)",
 				borderColor: "rgba(229, 152, 102)",
 				fillColor: "rgba(229, 152, 102,0.2)",
 				strokeColor: "rgba(229, 152, 102,1)",
@@ -203,7 +203,7 @@ function displayChart() {
 			},
 			{
 				data: pm25,
-				label: "Concentration of particulate matter < 10 microns (µg/m³)",
+				label: "PM < 10 (µg/m³)",
 				borderColor: "rgba(86, 101, 115)",
 				fillColor: "rgba(86, 101, 115,0.2)",
 				strokeColor: "rgba(86, 101, 115,1)",
